@@ -1,0 +1,54 @@
+<nav>
+
+    <ul>
+
+        <li><a href="/"><img src="/images/chef-burdeos.png" alt="Logo" class="chef"></a></li>
+
+        <li class="title">TartApp</li>
+
+    </ul>
+
+</nav>
+
+
+<div class="container-flex places">
+
+    <div class="row justify-content-around align-items-center">
+
+        <div class="col-4 places-list">
+
+            <h2>Recipes List</h2>
+
+            {{#each recipes}}
+
+            <ul>
+
+                <li>{{name}} | <a class="recipe-a" href="/recipes/{{id}}">See recipe</a> | <a href="#"><img class="heart" src="/images/corazon-empty.png"></a></li>
+                {{!-- añadir icono para guardar receta --}}
+
+            </ul>
+
+            {{/each}}
+
+            <a class="hover-btn btn" href="/recipes/new">Add recipe</a>
+
+            <a class="hover-btn btn" href="/welcome">Go back</a>
+
+        </div>
+
+        <div class="col-6">
+
+            <img class="receta" src="/images/receta.png">
+
+        </div>
+
+    </div>
+
+</div>
+
+<aside class="aside">
+
+    <p>Made for Ironhack Madrid</p>
+
+</aside>
+

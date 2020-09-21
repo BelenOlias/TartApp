@@ -1,0 +1,28 @@
+<section class="login">
+
+<h2>Log In</h2>
+
+<form action="/login" method="POST">
+
+    <label for="username">Username</label>
+    <input type="text" name="username" placeholder="Your username">
+    
+    
+    <br><br>
+
+    <label for="password">Password</label>
+    <input type="password" name="password" placeholder="Your password">
+
+    {{#if message}}
+    <p style="color: white">{{ message }}</p>
+    {{/if}}
+
+    <br><br>
+
+    <button type="submit">Log In</button>
+
+    <p>If you haven't created your account yet, <a href="/signup">Sign Up</a></p>
+
+</form>
+
+</section>

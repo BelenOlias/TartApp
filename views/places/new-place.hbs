@@ -1,0 +1,68 @@
+
+<nav>
+
+    <ul>
+
+        <li><a href="/"><img src="/images/chef-burdeos.png" alt="Logo" class="chef"></a></li>
+
+        <li class="title">TartApp</li>
+
+    </ul>
+
+</nav>
+
+<div class="container-flex new-form">
+
+    <div class="row align-items-start justify-content-around">
+    
+        <div class="col-4 places-list">
+
+            <h2>New place</h2>
+
+                <form action="/places/new" method="post" >
+
+                    <label for="name">Name</label>
+                    <input type="text" name="name" value="{{name}}"><br>
+
+                    <span>Location:</span><br>
+
+                    <label for="ingredients">Latitude</label>
+                    <input type="text" name="latitude" value="{{location.coordinates.[0]}}"><br>
+
+                    <label for="ingredients">Longitude</label>
+                    <input type="text" name="longitude" value="{{location.coordinates.[1]}}"><br>
+
+                </form>
+
+
+                <button class="hover-btn" type="submit">Add place</button>
+
+                <a class="hover-btn" href="/places">Go back</a>
+
+        </div>
+
+        <div class="col-6">
+
+            <img class="shop" src="/images/shop.jpg" alt="tienda">
+
+            <div class="row justify-content-start">
+
+                <div class="col-8">
+
+                    <p class="quote">"You can't buy happiness, but you can buy cake and that's kind the same thing"</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<aside class="aside">
+
+    <p>Made for Ironhack Madrid</p>
+
+</aside>

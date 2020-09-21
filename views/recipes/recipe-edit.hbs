@@ -1,0 +1,54 @@
+<nav>
+
+    <ul>
+
+        <li><a href="/"><img src="/images/chef-burdeos.png" alt="Logo" class="chef"></a></li>
+
+        <li class="title">TartApp</li>
+
+    </ul>
+
+</nav>
+
+
+<section class="recipe-list">
+
+<h2>{{name}} Recipe</h2>
+
+<form action="/recipes/{{id}}/edit" method="post">
+
+<label for="name">Name</label>
+<input type="text" name="name" value="{{name}}"><br>
+
+<label for="ingredients">Ingredients</label>
+<input type="text" name="ingredients" value="{{ingredients}}"><br>
+{{!-- arreglar --}}
+
+<label for="difficulty">Difficulty</label>
+<select name="difficulty">
+
+<option>Easy</option>
+<option>Amateur</option>
+<option>Chef</option>
+
+
+</select>
+
+
+</form>
+
+<div class="button">
+
+    <button class="hover-btn recipe-button" type="submit">Edit recipe</button>
+
+    <a class="hover-btn recipe-button" href="/recipes">Go back</a>
+
+</div>
+
+</section>
+
+<aside class="aside">
+
+    <p>Made for Ironhack Madrid</p>
+
+</aside>
