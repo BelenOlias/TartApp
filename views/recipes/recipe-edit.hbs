@@ -11,44 +11,92 @@
 </nav>
 
 
-<section class="recipe-list">
+    <div class="container-flex new-form">
 
-<h2>{{name}} Recipe</h2>
+        <div class="row justify-content-center align-items-center">
 
-<form action="/recipes/{{id}}/edit" method="post">
+            <div class="col-4" class="places-list">
 
-<label for="name">Name</label>
-<input type="text" name="name" value="{{name}}"><br>
+                <h2>{{name}} Recipe</h2>
 
-<label for="ingredients">Ingredients</label>
-<input type="text" name="ingredients" value="{{ingredients}}"><br>
-{{!-- arreglar --}}
+                <form action="/recipes/{{id}}/edit" method="post">
 
-<label for="difficulty">Difficulty</label>
-<select name="difficulty">
+                <label for="name">Name</label>
+                <input type="text" name="name" value="{{name}}"><br>
 
-<option>Easy</option>
-<option>Amateur</option>
-<option>Chef</option>
+               
+                <label for="ingredients">Ingredients<a href="#" class="add">+</a></label><br>
+                {{#each ingredients}}
+                <input class="edit-input" type="text" name="ingredients" value="{{this}}"><br><br>
+                {{/each}}
+
+                <label for="steps">Steps<a href="#" class="add">+</a></label><br>
+                {{#each steps}}
+                <input type="text" name="steps" value="{{this}}"><br><br>
+                {{/each}}
+
+                <label for="difficulty">Difficulty</label>
+                <select name="difficulty">
+
+                <option>Easy</option>
+                <option>Amateur</option>
+                <option>Chef</option>
 
 
-</select>
+                </select><br>
+                
+                <button class="hover-btn btn" type="submit">Edit recipe</button>
 
+                </form>
 
-</form>
+                <a class="hover-btn btn" href="/recipes">Go back</a>
 
-<div class="button">
+            </div>
 
-    <button class="hover-btn recipe-button" type="submit">Edit recipe</button>
+            <div class="col-6">
+            
+                <img class="editImg" src="/images/recipe-edit.jpg" alt="receta">
+            
+                <div class="row justify-content-start">
+            
+                    <div class="col-9">
+            
+                        <p class="quote">"Everything tastes better wrapped in a puff pastry"</p>
+            
+                    </div>
+            
+                </div>
+            
+            
+            </div>
 
-    <a class="hover-btn recipe-button" href="/recipes">Go back</a>
+        </div>
 
-</div>
+    </div>
 
-</section>
-
-<aside class="aside">
+<aside>
 
     <p>Made for Ironhack Madrid</p>
 
 </aside>
+
+
+<script>
+
+const buttons = document.querySelectorAll('.add')
+
+buttons.forEach( elm => {
+    
+    elm.onclick = () => {
+
+        const newInput = document.createElement('input')
+        newInput.placeholder = 'New ingredient'
+
+        const firstInput = document.querySelectorAll('.edit-input')[1]
+        
+        document.querySelector('form').insertBefore(newInput, firstInput)
+
+    }
+})
+
+</script>

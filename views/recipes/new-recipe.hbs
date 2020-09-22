@@ -18,17 +18,16 @@
 
             <h2>New recipe</h2>
 
-                <form action="/recipes/new" method="post" class="new-form">
+                <form action="/recipes/new" method="post">
 
                     <label for="name">Name</label>
-                    <input type="text" name="name" value="{{name}}"><br>
+                    <input type="text" name="name"><br>
 
                     <label for="ingredients">Ingredients</label>
-                    <input class="big-input" type="text" name="ingredients" value="{{ingredients}}"><br>
-                    {{!-- arreglar --}}
+                    <input class="big-input" type="text" name="ingredients"><br>
 
                     <label for="steps">Steps</label>
-                    <input class="big-input" type="text" name="steps" value="{{steps}}"><br>
+                    <input class="big-input" type="text" name="steps"><br>
 
                     <label for="difficulty">Difficulty</label>
                     <select name="difficulty">
@@ -37,14 +36,11 @@
                         <option>Amateur</option>
                         <option>Chef</option>
 
+                    </select><br>
 
-                    </select>
-
+                    <button class="hover-btn" type="submit">Create recipe</button>
 
                 </form>
-
-
-                <button class="hover-btn" type="submit">Create recipe</button>
 
                 <a class="hover-btn" href="/recipes">Go back</a>
 

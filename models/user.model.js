@@ -15,7 +15,11 @@ const userSchema = new Schema({
         type: String,
         enum: ['User', 'Admin'],
         default: 'User'
-    }
+    },
+
+    favourites: {
+        type: [String]
+    },
 
 }, {
     

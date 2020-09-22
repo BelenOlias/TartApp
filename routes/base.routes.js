@@ -1,4 +1,5 @@
 const express = require('express')
+const Recipe = require('../models/recipe.model')
 const router = express.Router()
 
 
@@ -25,21 +26,18 @@ router.get('/welcome', checkLoggedIn, (req, res) => res.render('welcome'))
 
 router.get('/profile', checkLoggedIn, (req, res, next) => res.render('auth/profile', req.user))
 
-router.get('/recipes/:recipe_id/delete', checkRole(['Admin']), (req, res, next) => res.send('AQUÍ ESTÁ LA SUPRESIÓN DE LA DOCUEMNTACIÓN'))
-//cambiar res.render de esta ruta
+router.get('/profile/myRecipes', (req, res, next) => res.render('auth/myRecipes'))
+
+router.get('/recipes/:recipe_id/delete', checkRole(['Admin']), (req, res, next) => {
+    
+    const id = req.params.recipe_id
+
+    Recipe.findByIdAndRemove(id)
+        .then(() => res.redirect('/recipes'))
+        .catch(err => (next))
+} )
 
 
-
-// router.get('/:place_id', checkLoggedIn, (req, res, next) => {
-
-//     const id = req.params.place_id
-
-//     Place.findById(id)
-//         .then(place => myPlace.create(place))
-//         .then(() => res.redirect('/places'))
-//         .catch(err => console.log(err))
-
-// })
 
 
 module.exports = router

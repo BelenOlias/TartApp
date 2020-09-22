@@ -60,19 +60,6 @@ router.post("/login", passport.authenticate('local', {
 }))
 
 
-// Profile //Revisar
-
-router.get('/profile/edit', checkLoggedIn, (req, res, next) => res.render('auth/profile-edit'))
-
-router.post('profile/edit', (req, res, next) => {
-
-    const id = req.user
-
-    User.findByIdAndUpdate(id)
-        .then(() => res.redirect('/profile'))
-    .catch(err => next(err))
-})
-
 // Logout
 
 router.get('/logout', (req, res, next) => {

@@ -12,13 +12,13 @@
 
 <div class="container-flex places">
 
-    <div class="row">
+    <div class="row justify-content-center align-items-start">
 
-        <div class="col-6 places-list">
+        <div class="col-4 places-list">
 
-            <h2>{{name}} Recipe</h2>
+            <h2>{{details.name}}</h2>
 
-            <p>Difficulty: {{difficulty}}</p>
+            <p>Difficulty: {{details.difficulty}}</p>
 
             <p>Ingredients</p>
 
@@ -26,8 +26,7 @@
 
                 {{#each details.ingredients}}
 
-                <li>{{details.ingredients}}</li>  
-                {{!-- falta que pinte la lista de ingredientes --}}
+                <li>{{this}}</li>  
 
                 {{/each}}
 
@@ -35,7 +34,7 @@
 
         </div>
 
-        <div class="col-6 places-list">
+        <div class="col-7 places-list">
         
             <p>Steps</p>
         
@@ -43,17 +42,19 @@
         
                 {{#each details.steps}}
         
-                <li>{{details.steps}}</li>
-                {{!-- falta que pinte la lista de ingredientes --}}
+                <li>{{this}}</li>
         
                 {{/each}}
         
             </ol>
 
             <hr>
-            
-            <a class="hover-btn btn" href="/recipes/{{id}}/edit">Edit recipe</a>
-            
+
+            <a class="hover-btn btn" href="/recipes/{{details.id}}/edit">Edit recipe</a>
+
+            <a class="hover-btn btn" href="/recipes/{{details.id}}/post">Add to My Recipes</a>
+
+
             <a class="hover-btn btn" href="/recipes">Go back</a>
 
         </div>

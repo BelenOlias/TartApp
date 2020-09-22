@@ -38,7 +38,7 @@ h2 {
   color: #f3f4f5
 }
 
-.heart {
+#heart {
   width: 50px;
   object-fit: cover;
 }
@@ -48,7 +48,7 @@ form label {
 }
 
 form {
-  font-size: 1.8em;
+  font-size: 1.4em;
 }
 
 .title {
@@ -179,7 +179,7 @@ font-weight: bold;
 //List of places
 
 .places {
-font-size: 1.8em;
+font-size: 1.4em;
 line-height: 60px;
 }
 
@@ -282,22 +282,28 @@ color: #f3f4f5
   color: #5f2f4e;
 }
 
-.new-form a, button {
-  font-size: 1.8em;
+.new-form a  {
+  font-size: 1.4em;
   text-decoration: none;
   color: #f3f4f5;
   background-color: #5f2f4e;
-  padding: 15px;
+  padding: 20px;
   border-radius: 10px;
   margin: 15px 15px 0 0;
 }
 
-.new-form a{
-  padding: 20px;
+.new-form button {
+ font-size: 1em;
+ text-decoration: none;
+ color: #f3f4f5;
+ background-color: #5f2f4e;
+ padding: 15px;
+ border-radius: 10px;
+ margin: 15px 15px 40px 0;
 }
 
-.aside {
-  position: absolute;
+aside {
+  position: sticky;
   bottom:0;
   width: 100%;
   height: 100px;
@@ -306,6 +312,7 @@ color: #f3f4f5
   font-size: 1.2em;
   text-align: center;
   padding: 40px;
+  margin-top: 170px;
 }
 
 .receta {
@@ -320,10 +327,27 @@ color: #f3f4f5
   filter: drop-shadow(0 10px 20px #5f2f4e);
 }
 
+.editImg {
+  height: 580px;
+  object-fit: cover;
+  filter: drop-shadow(0 10px 20px #5f2f4e);
+}
+
 
 .quote {
-  font-size: 1.5em;
+  font-size: 1.4em;
   padding-top: 70px;
  text-align: center;
  
+}
+
+.quoted{
+   padding-top: 70px;
+   text-align: center;
+   font-size: 1.2em;
+}
+
+.new-form .add {
+  padding: 0px 5px;
+  margin-left: 10px;
 }

@@ -1,6 +1,12 @@
 const express = require('express')
 const router = express.Router()
 const Recipe = require('../models/recipe.model')
+const User = require('../models/user.model')
+
+const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() : res.render('auth/login', {
+    message: 'Unidentified, please log in to continue'
+})
+
 
 
 //List of recipes
@@ -35,6 +41,7 @@ router.post('/new', (req, res, next) => {
 
     const { name, ingredients, steps, difficulty } = req.body
 
+    console.log(req.body)
     
 
     Recipe.create({ name, ingredients, steps, difficulty })
@@ -50,10 +57,7 @@ router.get('/:recipe_id', (req, res, next) => {
     const id = req.params.recipe_id
 
     Recipe.findById(id)
-        .then(details => {
-            console.log(details.ingredients)
-            res.render('recipes/recipe-details', { details })
-        } )
+        .then(details => res.render('recipes/recipe-details', { details }))
         .catch(err => next(err))
 })
 
@@ -62,8 +66,6 @@ router.get('/:recipe_id', (req, res, next) => {
 router.get('/:recipe_id/edit', (req, res, next) => {
 
     const id = req.params.recipe_id
-
-    
 
     Recipe.findById(id)
         .then(details => res.render('recipes/recipe-edit', details))
@@ -75,18 +77,40 @@ router.post('/:recipe_id/edit', (req, res, next) => {
 
     const id = req.params.recipe_id
 
-    const { name, ingredients, difficulty } = req.body
+    const { name, ingredients, steps, difficulty } = req.body
 
-    Recipe.findByIdAndUpdate(id, { name, ingredients, difficulty })
+    console.log(req.body)
+
+    Recipe.findByIdAndUpdate(id, { name, ingredients, steps, difficulty })
         .then(() => res.redirect('/recipes'))
         .catch(err => next(err))
 
 })
 
+//Add recipe to myRecipes
 
+router.get('/:recipe_id/post', checkLoggedIn, (req, res, next) => {
 
+    const id = req.params.recipe_id
 
+    const { _id } = req.user
 
+   // let favs = []
+
+    let temporalFav = [...req.user.favourites,...favourites]
+
+    Recipe.findById(id)
+        .then(recipe => {
+            req.user.favourites.push(recipe.name)
+            // favs.push(recipe.name)
+            User.findByIdAndUpdate({ _id }, { favourites: temporalFav })
+            console.log(req.user)
+            res.redirect('/recipes')
+        })
+
+        .catch(err => next(err))
+
+})
 
 
 

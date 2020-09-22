@@ -13,7 +13,7 @@
 
 <div class="container-flex places">
 
-    <div class="row justify-content-around align-items-center">
+    <div class="row justify-content-around align-items-start">
 
         <div class="col-4 places-list">
 
@@ -23,8 +23,7 @@
 
             <ul>
 
-                <li>{{name}} | <a class="recipe-a" href="/recipes/{{id}}">See recipe</a> | <a href="#"><img class="heart" src="/images/corazon-empty.png"></a></li>
-                {{!-- añadir icono para guardar receta --}}
+                <li>{{name}} | <a class="recipe-a" href="/recipes/{{id}}">See recipe</a> | <a class="recipe-a" href="/recipes/{{id}}/delete">Delete recipe</a></li>
 
             </ul>
 
@@ -39,6 +38,16 @@
         <div class="col-6">
 
             <img class="receta" src="/images/receta.png">
+
+            <div class="row justify-content-start">
+            
+                <div class="col-8">
+            
+                    <p class="quoted">"No one is born a great cook. One learns by doing"</p>
+            
+                </div>
+            
+            </div>
 
         </div>
 
