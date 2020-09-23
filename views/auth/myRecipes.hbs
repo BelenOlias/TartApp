@@ -1,7 +1,62 @@
-{{username}}
+<nav>
 
-{{#each favourites}}
+    <ul>
 
-<p>{{this}}</p>
+        <li><a href="/"><img src="/images/chef-burdeos.png" alt="Logo" class="chef"></a></li>
 
-{{/each}}
+        <li class="title">TartApp</li>
+
+    </ul>
+
+</nav>
+
+<div class="container-flex places">
+
+    <div class="row justify-content-around align-items-start">
+
+        <div class="col-3 places-list">
+
+            <h2>My Recipes</h2>
+
+            {{#each favourites}}
+
+            <ul>
+
+                <li>{{this}} | <a href="/profile/myRecipes/delete">Delete</a></li>
+
+            </ul>
+
+            {{/each}}
+
+            <a class="hover-btn btn" href="/welcome">Go back</a>
+
+        </div>
+
+        <div class="col-6">
+
+            <img class="receta" src="/images/milhojas.jpg">
+
+            <div class="row justify-content-start">
+
+                <div class="col-9">
+
+                    <p class="quoted">"Eating is a necessity, but cooking is an art"</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<aside class="aside">
+
+    <p>Made for Ironhack Madrid</p>
+
+</aside>

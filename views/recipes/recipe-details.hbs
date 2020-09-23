@@ -14,46 +14,27 @@
 
     <div class="row justify-content-center align-items-start">
 
-        <div class="col-4 places-list">
+        {{#each details}}
 
-            <h2>{{details.name}}</h2>
+        {{> recipeCard}}
 
-            <p>Difficulty: {{details.difficulty}}</p>
+        {{/each}}
 
-            <p>Ingredients</p>
+    </div>
 
-            <ul>
+    <div class="row">
 
-                {{#each details.ingredients}}
-
-                <li>{{this}}</li>  
-
-                {{/each}}
-
-            </ul>
-
-        </div>
-
-        <div class="col-7 places-list">
-        
-            <p>Steps</p>
-        
-            <ol>
-        
-                {{#each details.steps}}
-        
-                <li>{{this}}</li>
-        
-                {{/each}}
-        
-            </ol>
+        <div class="col-12">
 
             <hr>
 
             <a class="hover-btn btn" href="/recipes/{{details.id}}/edit">Edit recipe</a>
-
-            <a class="hover-btn btn" href="/recipes/{{details.id}}/post">Add to My Recipes</a>
-
+        
+                <form action="/recipes/{{details.id}}/favourites" method="post">
+                
+                <button class="hover-btn btn add-btn" type="submit">Add to My Recipes</button>
+                
+                </form>
 
             <a class="hover-btn btn" href="/recipes">Go back</a>
 
@@ -68,3 +49,4 @@
     <p>Made for Ironhack Madrid</p>
 
 </aside>
+

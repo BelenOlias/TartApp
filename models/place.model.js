@@ -5,11 +5,8 @@ const placeSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
+        default: 'Name to be added'
 
-    },
-
-    speciality: {
-        type: String
     },
 
     location: {

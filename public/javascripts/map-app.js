@@ -4,6 +4,8 @@ window.onload= () => {
 
     const markers = []
 
+    let infoWindow
+
     initMap() 
 
     function initMap() {
@@ -25,16 +27,25 @@ window.onload= () => {
             zoom: 15
         })
         
-        // const infoWindow = new google.maps.InfoWindow()
-
-        // let service = new google.maps.places.PlacesService(map)
-
-        // let request = {}
+        infoWindow = new google.maps.InfoWindow()
 
         places.forEach(elm => {
-            // request = {
+           
+            // let request = {
             //     query: elm.name,
             //     fields: ['place_id']
+            // }
+
+            // let service = new.google.maps.places.PlacesService(map)
+
+            // service.findPlaceFromQuery(request, callback)
+
+            // function callback(results, status) {
+            //     if (status == google.maps.places.PlacesServiceStatus.OK) {
+            //         for (var i = 0; i < results.length; i++) {
+            //             createMarker(results[i]);
+            //         }
+            //     }
             // }
 
             let center = {
@@ -50,13 +61,6 @@ window.onload= () => {
 
             markers.push(pin)
         
-            // service.findPlaceFromQuery(request, function (results, status) {
-            //     if (status === google.maps.places.PlacesServiceStatus.OK) {
-            //         for (var i = 0; i < results.length; i++) {
-            //             createMarker(results[i]);
-            //         }
-            //     }
-            // })
         })
 
         map.setCenter({

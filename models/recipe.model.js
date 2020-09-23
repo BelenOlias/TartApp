@@ -5,11 +5,13 @@ const recipeSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-    },
+        unique: true,
+        default: 'Name of recipe to be included',     },
 
     ingredients: {
         type: [String],
-        required: true
+        required: true,
+        default: ['Ingredients to be added']
     },
 
     difficulty: {
@@ -19,7 +21,9 @@ const recipeSchema = new mongoose.Schema({
 
     steps: {
         type: [String],
-        required: true
+        required: true, 
+        default: ['Steps to be included'],
+
     },
 
 }, {

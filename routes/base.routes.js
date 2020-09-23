@@ -1,5 +1,6 @@
 const express = require('express')
 const Recipe = require('../models/recipe.model')
+const User = require('../models/user.model')
 const router = express.Router()
 
 
@@ -26,7 +27,30 @@ router.get('/welcome', checkLoggedIn, (req, res) => res.render('welcome'))
 
 router.get('/profile', checkLoggedIn, (req, res, next) => res.render('auth/profile', req.user))
 
-router.get('/profile/myRecipes', (req, res, next) => res.render('auth/myRecipes'))
+router.get('/profile/myRecipes', checkLoggedIn, (req, res, next) => {
+
+    const user = req.user
+
+    const id = req.user._id
+
+    User.findById(id)
+        .then(user => res.render('auth/myRecipes', user))
+        .then(() => console.log(user))
+        .catch(err => next(err))
+
+})
+
+router.get('/profile/myRecipes/delete', (req, res, next) => {
+
+    const id = req.params.recipe_id
+
+    Recipe.findByIdAndRemove(id)
+    .then(() => res.redirect('/profile/myRecipes'))
+    .catch(err => (next))
+
+
+})
+
 
 router.get('/recipes/:recipe_id/delete', checkRole(['Admin']), (req, res, next) => {
     
@@ -36,8 +60,6 @@ router.get('/recipes/:recipe_id/delete', checkRole(['Admin']), (req, res, next) 
         .then(() => res.redirect('/recipes'))
         .catch(err => (next))
 } )
-
-
 
 
 module.exports = router

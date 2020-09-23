@@ -3,39 +3,25 @@ const router = express.Router()
 const Recipe = require('../models/recipe.model')
 const User = require('../models/user.model')
 
+
+
 const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() : res.render('auth/login', {
     message: 'Unidentified, please log in to continue'
 })
 
 
-
 //List of recipes
-router.get('/', (req, res, next) => {
+router.get('/', checkLoggedIn, (req, res, next) => {
 
     Recipe.find()
         .then(recipes => res.render('recipes/recipes-list', { recipes }))
         .catch(err => next(err))
 })
 
-//Add a recipe to myRecipes
-
-// window.addEventListener('load', () => {
-//     document.getElementById('myRecipe').addEventListener('click', function (event) {
-
-//         event.preventDefault()
-
-//         const id = req.params.recipe_id
-
-//         Recipe.findById(id)
-//             .then(place => myRecipe.create(place))
-//             .catch(err => console.log(err))
-
-//     })
-// })
 
 //New recipe
 
-router.get('/new', (req, res, next) => res.render('recipes/new-recipe'))
+router.get('/new', checkLoggedIn, (req, res, next) => res.render('recipes/new-recipe'))
 
 router.post('/new', (req, res, next) => {
 
@@ -52,7 +38,7 @@ router.post('/new', (req, res, next) => {
 
 
 //Details of a recipe
-router.get('/:recipe_id', (req, res, next) => {
+router.get('/:recipe_id', checkLoggedIn, (req, res, next) => {
 
     const id = req.params.recipe_id
 
@@ -63,7 +49,7 @@ router.get('/:recipe_id', (req, res, next) => {
 
 //Edit recipe
 
-router.get('/:recipe_id/edit', (req, res, next) => {
+router.get('/:recipe_id/edit', checkLoggedIn, (req, res, next) => {
 
     const id = req.params.recipe_id
 
@@ -73,7 +59,7 @@ router.get('/:recipe_id/edit', (req, res, next) => {
 })
 
 
-router.post('/:recipe_id/edit', (req, res, next) => {
+router.post('/:recipe_id/edit', checkLoggedIn, (req, res, next) => {
 
     const id = req.params.recipe_id
 
@@ -89,29 +75,19 @@ router.post('/:recipe_id/edit', (req, res, next) => {
 
 //Add recipe to myRecipes
 
-router.get('/:recipe_id/post', checkLoggedIn, (req, res, next) => {
-
-    const id = req.params.recipe_id
-
-    const { _id } = req.user
-
-   // let favs = []
-
-    let temporalFav = [...req.user.favourites,...favourites]
-
+router.post("/:recipe_id/favourites", checkLoggedIn, (req, res, next) => {
+    const id = req.params.recipe_id;
+    const { _id, favourites } = req.user;
+    
     Recipe.findById(id)
-        .then(recipe => {
-            req.user.favourites.push(recipe.name)
-            // favs.push(recipe.name)
-            User.findByIdAndUpdate({ _id }, { favourites: temporalFav })
-            console.log(req.user)
-            res.redirect('/recipes')
+        .then((recipe) => recipe.name)
+        .then((recipeName) => {
+            let temporalFav = [...favourites, recipeName];
+            return User.findByIdAndUpdate({ _id}, { favourites: temporalFav })
         })
-
-        .catch(err => next(err))
-
-})
-
+        .then(res.redirect("/recipes"))
+        .catch((err) => next(err));
+});
 
 
 

@@ -1,12 +1,13 @@
 const express = require('express')
 const router = express.Router()
 const Place = require('../models/place.model')
-// const myPlace = require('../models/myPlace.model')
 
-
+const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() : res.render('auth/login', {
+    message: 'Unidentified, please log in to continue'
+})
 
 //Places List
-router.get('/', (req, res, next) => {
+router.get('/', checkLoggedIn, (req, res, next) => {
 
     Place.find()
         .then(places => res.render('places/places-list', { places }))
@@ -14,30 +15,12 @@ router.get('/', (req, res, next) => {
     
 })
 
-//Add a place to myPlaces
-
-// window.addEventListener('load', () => {
-//     document.getElementById('myPlace').addEventListener('click', function (event) {
-
-//         event.preventDefault()
-
-//         const id = req.params.place_id
-
-//         Place.findById(id)
-//             .then(place => myPlace.create(place))
-//             .catch(err => console.log(err))
-    
-//     })
-// })
-
-
-
 
 //Add a new place
 
-router.get('/new', (req, res, next) => res.render('places/new-place'))
+router.get('/new', checkLoggedIn, (req, res, next) => res.render('places/new-place'))
 
-router.post('/new', (req, res, next) => {
+router.post('/new', checkLoggedIn, (req, res, next) => {
 
     const { name, latitude, longitude } = req.body
 
