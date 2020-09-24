@@ -47,6 +47,7 @@ router.get('/:recipe_id', checkLoggedIn, (req, res, next) => {
         .catch(err => next(err))
 })
 
+
 //Edit recipe
 
 router.get('/:recipe_id/edit', checkLoggedIn, (req, res, next) => {
@@ -73,6 +74,7 @@ router.post('/:recipe_id/edit', checkLoggedIn, (req, res, next) => {
 
 })
 
+
 //Add recipe to myRecipes
 
 router.post("/:recipe_id/favourites", checkLoggedIn, (req, res, next) => {
@@ -88,7 +90,6 @@ router.post("/:recipe_id/favourites", checkLoggedIn, (req, res, next) => {
         .then(res.redirect("/recipes"))
         .catch((err) => next(err));
 });
-
 
 
 module.exports = router

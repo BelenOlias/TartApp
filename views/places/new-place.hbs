@@ -1,21 +1,10 @@
-
-<nav>
-
-    <ul>
-
-        <li><a href="/"><img src="/images/chef-burdeos.png" alt="Logo" class="chef"></a></li>
-
-        <li class="title">TartApp</li>
-
-    </ul>
-
-</nav>
+{{> navBar}}
 
 <div class="container-flex new-form">
 
     <div class="row align-items-start justify-content-around">
     
-        <div class="col-4 places-list">
+        <div class="col-4 section-list">
 
             <h2>New place</h2>
 
@@ -42,13 +31,13 @@
 
         <div class="col-6">
 
-            <img class="shop" src="/images/shop.jpg" alt="tienda">
+            <img class="image animation show fadeIn" src="/images/shop.jpg" alt="tienda">
 
             <div class="row justify-content-start">
 
                 <div class="col-8">
 
-                    <p class="quote">"You can't buy happiness, but you can buy cake and that's kind the same thing"</p>
+                    <p class="quote animation show fadeIn">"You can't buy happiness, but you can buy cake and that's kind the same thing"</p>
 
                 </div>
 
@@ -60,8 +49,4 @@
 
 </div>
 
-<aside class="aside">
-
-    <p>Made for Ironhack Madrid</p>
-
-</aside>
+{{> footer}}

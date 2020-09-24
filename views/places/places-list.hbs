@@ -1,20 +1,10 @@
-<nav>
+{{> navBar}}
 
-    <ul>
-
-        <li><a href="/"><img src="/images/chef-burdeos.png" alt="Logo" class="chef"></a></li>
-
-        <li class="title">TartApp</li>
-
-    </ul>
-
-</nav>
-
-<div class="container-flex places">
+<div class="container-flex section">
 
     <div class="row justify-content-center">
 
-        <div class="col-3 places-list">
+        <div class="col-3 section-list">
 
             <h2>Places List</h2>
 
@@ -37,7 +27,7 @@
 
         <div class="col-8">
 
-            <div id="map"></div>
+            <div id="map" class="show fadeIn"></div>
 
         </div>
 
@@ -45,11 +35,7 @@
 
 </div>
 
-<aside class="aside">
-
-    <p>Made for Ironhack Madrid</p>
-
-</aside>
+{{> footer}}
 
 
 

@@ -1,21 +1,10 @@
-<nav>
-
-    <ul>
-
-        <li><a href="/"><img src="/images/chef-burdeos.png" alt="Logo" class="chef"></a></li>
-
-        <li class="title">TartApp</li>
-
-    </ul>
-
-</nav>
-
+{{> navBar}}
 
     <div class="container-flex new-form">
 
         <div class="row justify-content-center align-items-center">
 
-            <div class="col-4" class="places-list">
+            <div class="col-4" class="section-list">
 
                 <h2>{{name}} Recipe</h2>
 
@@ -25,14 +14,14 @@
                 <input type="text" name="name" value="{{name}}"><br>
 
                
-                <label for="ingredients">Ingredients<a href="#" class="add">+</a></label><br>
+                <label for="ingredients">Ingredients<button class="addIng add-btn">+</button></label><br>
                 {{#each ingredients}}
-                <input class="edit-input" type="text" name="ingredients" value="{{this}}"><br><br>
+                <input class="ingInput" type="text" name="ingredients" value="{{this}}"><br><br>
                 {{/each}}
-
-                <label for="steps">Steps<a href="#" class="add">+</a></label><br>
+            
+                <label for="steps">Steps<button class="addStep add-btn">+</button></label><br>
                 {{#each steps}}
-                <input type="text" name="steps" value="{{this}}"><br><br>
+                <input class="stepInput" type="text" name="steps" value="{{this}}"><br><br>
                 {{/each}}
 
                 <label for="difficulty">Difficulty</label>
@@ -55,18 +44,19 @@
 
             <div class="col-6">
             
-                <img class="editImg" src="/images/recipe-edit.jpg" alt="receta">
-            
-                <div class="row justify-content-start">
-            
+                <img class="image bigger reveal fadeInRight" data-delay="300ms" src="/images/recipe-edit.jpg" alt="receta">  
+
+                <div class="row">
+
                     <div class="col-9">
-            
-                        <p class="quote">"Everything tastes better wrapped in a puff pastry"</p>
-            
+
+                    <p class="quote edit reveal fadeInRight" data-delay="300ms" >"Everything tastes better wrapped in a puff pastry"</p>
+
                     </div>
-            
+
                 </div>
             
+                <img class="image bigger reveal fadeInRight" data-delay="1500ms" src="/images/puff.jpg" alt="hojaldre">
             
             </div>
 
@@ -74,29 +64,48 @@
 
     </div>
 
-<aside>
+{{> footer}}
 
-    <p>Made for Ironhack Madrid</p>
-
-</aside>
 
 
 <script>
 
-const buttons = document.querySelectorAll('.add')
+    const buttonsIng = document.querySelectorAll('.addIng')
 
-buttons.forEach( elm => {
+    buttonsIng.forEach( elm => {
     
-    elm.onclick = () => {
+        elm.onclick = () => {
 
-        const newInput = document.createElement('input')
-        newInput.placeholder = 'New ingredient'
+         const newInput = document.createElement('input')
+            newInput.placeholder = 'New ingredient'
+            newInput.name = 'ingredients'
 
-        const firstInput = document.querySelectorAll('.edit-input')[1]
+
+            const firstInput = document.querySelectorAll('.ingInput')[0]
         
-        document.querySelector('form').insertBefore(newInput, firstInput)
+            document.querySelector('form').insertBefore(newInput, firstInput)
 
-    }
-})
+        }
+    })
+
+    const buttonsStep = document.querySelectorAll('.addStep')
+
+    buttonsStep.forEach(elm => {
+
+        elm.onclick = () => {
+
+            const newInput = document.createElement('input')
+            newInput.placeholder = 'New step'
+            newInput.name = 'steps'
+
+
+            const firstInput = document.querySelectorAll('.stepInput')[0]
+
+            document.querySelector('form').insertBefore(newInput, firstInput)
+
+        }
+    })
 
 </script>
+
+

@@ -1,17 +1,6 @@
 <main class="main-profile">
 
-<nav>
-
-    <ul>
-
-        <li><a href="/"><img src="/images/chef-burdeos.png" alt="Logo" class="chef"></a></li>
-
-        <li class="title">TartApp</li>
-
-    </ul>
-
-</nav>
-
+{{> navBar}}
 
 <section class="profile">
 
@@ -33,13 +22,13 @@
 
             <div class="col-8">
 
-                <p>Bakers make the world smell better</p>
+                <p class="show fadeInRight">Bakers make the world smell better</p>
 
                 <div class="row justify-content-center">
 
                     <div class="col-8">
 
-                        <img class="shop" src="/images/working-chef.jpg" alt="chef">
+                        <img class="image show fadeInRight" src="/images/working-chef.jpg" alt="chef">
 
                     </div>
 
@@ -53,10 +42,6 @@
 
 </section>
 
-<aside class="aside">
-
-   <p>Made for Ironhack Madrid</p>
-
-</aside>
+{{> footer}}
 
 </main>

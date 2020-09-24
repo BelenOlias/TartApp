@@ -35,31 +35,26 @@ router.get('/profile/myRecipes', checkLoggedIn, (req, res, next) => {
 
     User.findById(id)
         .then(user => res.render('auth/myRecipes', user))
-        .then(() => console.log(user))
         .catch(err => next(err))
 
 })
 
-router.get('/profile/myRecipes/delete', (req, res, next) => {
+router.post('/profile/myRecipes/:recipe_name', checkLoggedIn, (req, res, next) => {
 
-    const id = req.params.recipe_id
+    const recipeName = req.params.recipe_name
 
-    Recipe.findByIdAndRemove(id)
-    .then(() => res.redirect('/profile/myRecipes'))
-    .catch(err => (next))
+    const { _id, favourites } = req.user
 
+    console.log(recipeName)
 
-})
+    let temporalFav = [...favourites]
 
-
-router.get('/recipes/:recipe_id/delete', checkRole(['Admin']), (req, res, next) => {
+    let newFav = temporalFav.filter(elm => !(elm.includes(recipeName)))
     
-    const id = req.params.recipe_id
-
-    Recipe.findByIdAndRemove(id)
-        .then(() => res.redirect('/recipes'))
-        .catch(err => (next))
-} )
-
+     User.findByIdAndUpdate({ _id }, { favourites: newFav })
+        .then(() => res.redirect('/profile/myRecipes'))
+        .catch(err => next(err))
+    
+})
 
 module.exports = router

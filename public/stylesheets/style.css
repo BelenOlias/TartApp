@@ -1,17 +1,3 @@
-.hover-btn {
-  opacity: 1;
-  transition: 0.3s; }
-
-.hover-btn:hover {
-  opacity: 0.6; }
-
-.hover-profile {
-  transition: 0.3s; }
-
-.hover-profile:hover {
-  background-color: #5f2f4e;
-  color: #f3f4f5; }
-
 html {
   min-height: 100%;
   position: relative; }
@@ -21,15 +7,16 @@ body {
   font-family: 'Montserrat', sans-serif;
   color: #5f2f4e; }
 
+h1 {
+  font-size: 12em;
+  font-weight: 600;
+  margin-bottom: 80px; }
+
 h2 {
   font-size: 3em;
   font-weight: bold;
   margin-bottom: 40px;
   color: #f3f4f5; }
-
-#heart {
-  width: 50px;
-  object-fit: cover; }
 
 form label {
   margin: 30px 0; }
@@ -61,11 +48,6 @@ nav a {
 .index {
   text-align: center;
   margin-top: 150px; }
-
-h1 {
-  font-size: 180px;
-  font-weight: 600;
-  margin-bottom: 80px; }
 
 .index a {
   color: white;
@@ -127,21 +109,21 @@ h1 {
   height: 300px;
   object-fit: cover; }
 
-.places {
+.section {
   font-size: 1.4em;
   line-height: 60px; }
 
-.places h2 {
+.section h2 {
   font-size: 2em;
   color: #5f2f4e; }
 
-.places a {
+.section a {
   text-decoration: none;
   color: #5f2f4e;
   font-weight: bold;
   font-size: 1em; }
 
-.places .btn {
+.section .btn {
   font-weight: normal;
   background-color: #5f2f4e;
   padding: 15px;
@@ -149,7 +131,7 @@ h1 {
   border-radius: 10px;
   margin: 20px 10px; }
 
-.places-list {
+.section-list {
   padding-top: 20px;
   margin-left: 50px; }
 
@@ -233,38 +215,116 @@ aside {
   font-size: 1.2em;
   text-align: center;
   padding: 40px;
-  margin-top: 170px; }
+  margin-top: 250px; }
 
-.receta {
+.image {
   height: 480px;
   object-fit: cover;
   filter: drop-shadow(0 10px 20px #5f2f4e); }
 
-.shop {
-  height: 480px;
-  object-fit: cover;
-  filter: drop-shadow(0 10px 20px #5f2f4e); }
-
-.editImg {
-  height: 580px;
-  object-fit: cover;
-  filter: drop-shadow(0 10px 20px #5f2f4e); }
+.image.bigger {
+  height: 580px; }
 
 .quote {
   font-size: 1.4em;
   padding-top: 70px;
   text-align: center; }
 
-.quoted {
-  padding-top: 70px;
-  text-align: center;
+.quote.mini {
   font-size: 1.2em; }
 
-.new-form .add {
+.quote.edit {
+  font-size: 3em;
+  padding: 150px 0; }
+
+.new-form .add-btn {
   padding: 0px 5px;
   margin-left: 10px; }
 
 .add-btn {
   font-size: 0.7em; }
+
+.hover-btn {
+  opacity: 1;
+  transition: 0.3s; }
+
+.hover-btn:hover {
+  opacity: 0.6; }
+
+.hover-profile {
+  transition: 0.3s; }
+
+.hover-profile:hover {
+  background-color: #5f2f4e;
+  color: #f3f4f5; }
+
+.myRecipeForm {
+  display: inline; }
+
+.myRecipeForm button {
+  font-size: 0.7em; }
+
+/* ----- REVEAL EFFECTS ----- */
+.reveal.fadeInUp {
+  opacity: 0;
+  transition-property: all;
+  transition-duration: 1s;
+  transform: translateY(20px); }
+
+.reveal.fadeInUp.visible {
+  transform: translateY(0);
+  opacity: 1; }
+
+.reveal.fadeInRight {
+  opacity: 0;
+  transition-property: all;
+  transition-duration: 1s;
+  transform: translateX(20px); }
+
+.reveal.fadeInRight.visible {
+  transform: translateX(0);
+  opacity: 1; }
+
+.reveal.fadeInLeft {
+  opacity: 0;
+  transition-property: all;
+  transition-duration: 1s;
+  transform: translateX(-20px); }
+
+.reveal.fadeInLeft.visible {
+  transform: translateX(0);
+  opacity: 1; }
+
+.reveal.fadeIn {
+  transition-property: opacity;
+  transition-duration: 1s;
+  opacity: 0; }
+
+.reveal.fadeIn.visible {
+  opacity: 1; }
+
+[data-delay='300ms'] {
+  transition-delay: 300ms; }
+
+[data-delay='600ms'] {
+  transition-delay: 600ms; }
+
+.show.fadeIn {
+  transition-property: opacity;
+  transition-duration: 1s;
+  opacity: 0; }
+
+.show.fadeIn.visible {
+  opacity: 1; }
+
+.show.fadeInRight {
+  opacity: 0;
+  transition-property: all;
+  transition-duration: 1s;
+  transform: translateX(20px); }
+
+.show.fadeInRight.visible {
+  transform: translateX(0);
+  opacity: 1; }
 
 /*# sourceMappingURL=style.css.map */

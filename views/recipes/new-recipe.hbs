@@ -1,20 +1,10 @@
-<nav>
-
-    <ul>
-
-        <li><a href="/"><img src="/images/chef-burdeos.png" alt="Logo" class="chef"></a></li>
-
-        <li class="title">TartApp</li>
-
-    </ul>
-
-</nav>
+{{> navBar}}
 
 <div class="container-flex new-form">
 
     <div class="row justify-content-center align-items-start">
 
-        <div class="col-4 places-list">
+        <div class="col-4 section-list">
 
             <h2>New recipe</h2>
 
@@ -48,13 +38,13 @@
 
         <div class="col-6">
         
-            <img class="shop" src="/images/receta-new.png" alt="receta">
+            <img class="image show fadeInRight" src="/images/receta-new.png" alt="receta">
 
             <div class="row justify-content-start">
             
                 <div class="col-8">
             
-                    <p class="quote">"A recipe has no soul. You, as the cook, must bring soul to the recipe"</p>
+                    <p class="quote show fadeInRight">"A recipe has no soul. You, as the cook, must bring soul to the recipe"</p>
             
                 </div>
             
@@ -68,8 +58,4 @@
         
 </div>
 
-<aside class="aside">
-
-    <p>Made for Ironhack Madrid</p>
-
-</aside>
+{{> footer}}

@@ -1,52 +1,63 @@
-<nav>
+{{> navBar}}
 
-    <ul>
-
-        <li><a href="/"><img src="/images/chef-burdeos.png" alt="Logo" class="chef"></a></li>
-
-        <li class="title">TartApp</li>
-
-    </ul>
-
-</nav>
-
-<div class="container-flex places">
+<div class="container-flex section">
 
     <div class="row justify-content-center align-items-start">
 
-        {{#each details}}
+        <div class="col-4 section-list">
 
-        {{> recipeCard}}
+            <h2>{{details.name}}</h2>
 
-        {{/each}}
+            <p>Difficulty: {{details.difficulty}}</p>
 
-    </div>
+            <p>Ingredients</p>
 
-    <div class="row">
+            <ul>
 
-        <div class="col-12">
+                {{#each details.ingredients}}
+
+                <li>{{this}}</li>  
+
+                {{/each}}
+
+            </ul>
+
+        </div>
+
+        <div class="col-7 section-list">
+        
+            <p>Steps</p>
+        
+            <ol>
+        
+                {{#each details.steps}}
+        
+                <li>{{this}}</li>
+        
+                {{/each}}
+        
+            </ol>
 
             <hr>
 
-            <a class="hover-btn btn" href="/recipes/{{details.id}}/edit">Edit recipe</a>
-        
-                <form action="/recipes/{{details.id}}/favourites" method="post">
-                
-                <button class="hover-btn btn add-btn" type="submit">Add to My Recipes</button>
-                
-                </form>
+                <div class="row">
 
-            <a class="hover-btn btn" href="/recipes">Go back</a>
+                    <a class="hover-btn btn" href="/recipes/{{details.id}}/edit">Edit recipe</a>
+            
+                    <form action="/recipes/{{details.id}}/favourites" method="post">
+            
+                         <button class="hover-btn btn add-btn" type="submit">Add to My Recipes</button>
+            
+                    </form>
+            
+                    <a class="hover-btn btn" href="/recipes">Go back</a>
 
-        </div>
+                </div>
+
+        </div> 
 
     </div>
 
 </div>
 
-<aside class="aside">
-
-    <p>Made for Ironhack Madrid</p>
-
-</aside>
-
+{{> footer}}

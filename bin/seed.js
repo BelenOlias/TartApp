@@ -1,7 +1,10 @@
 const mongoose = require('mongoose')
 
 const dbName = 'bootcamp-project2'
-mongoose.connect('mongodb+srv://BelenOlias:qUW2FYfzj25NzjU@cluster0.eyzhh.mongodb.net/test', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(`mongodb://localhost/${dbName}`, { useNewUrlParser: true, useUnifiedTopology: true })
+
+// mongoose.connect('mongodb+srv://BelenOlias:qUW2FYfzj25NzjU@cluster0.eyzhh.mongodb.net/test', { useNewUrlParser: true, useUnifiedTopology: true })
+
 
 //Places
 
@@ -104,13 +107,6 @@ Recipe.create(recipes)
     .then(recipes => console.log(`Se han creado ${recipes.length} recetas en la DDBB`))
     .catch(err => console.log(err))
 
-
-//Usuarios 
-
-// const passport = require('passport')
-// const bcrypt = require('bcrypt')
-// const bcryptSalt = 10
-
 const User = require('../models/user.model')
 
 const users = [
@@ -123,16 +119,7 @@ const users = [
 
 ]
 
-// users.forEach(elm => {
-
-//     const salt = bcrypt.genSaltSync(bcryptSalt)
-//     const hashPass = bcrypt.hashSync(users.password, salt)
-// })
-
-
 mongoose.connection.collections['users'].drop()
-
-// User.create(users[{ name, password: hashPass, role }])
     
 User.create(users)
     .then(users => console.log(`Se han creado ${users.length} usuarios en la DDBB`))
