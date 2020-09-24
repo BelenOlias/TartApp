@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 
 const dbName = 'bootcamp-project2'
-mongoose.connect(`mongodb://localhost/${dbName}`, { useNewUrlParser: true, useUnifiedTopology: true })
+// mongoose.connect(`mongodb://localhost/${dbName}`, { useNewUrlParser: true, useUnifiedTopology: true })
 
-// mongoose.connect('mongodb+srv://BelenOlias:qUW2FYfzj25NzjU@cluster0.eyzhh.mongodb.net/test', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://BelenOlias:qUW2FYfzj25NzjU@cluster0.eyzhh.mongodb.net/test', { useNewUrlParser: true, useUnifiedTopology: true })
 
 
 //Places
