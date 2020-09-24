@@ -39,6 +39,7 @@ router.get('/profile/myRecipes', checkLoggedIn, (req, res, next) => {
 
 })
 
+
 router.post('/profile/myRecipes/:recipe_name', checkLoggedIn, (req, res, next) => {
 
     const recipeName = req.params.recipe_name
@@ -55,6 +56,16 @@ router.post('/profile/myRecipes/:recipe_name', checkLoggedIn, (req, res, next) =
         .then(() => res.redirect('/profile/myRecipes'))
         .catch(err => next(err))
     
+})
+
+
+router.get('/recipes/:recipe_id/delete', checkRole(['Admin']), (req, res, next) => {
+
+    const id = req.params.recipe_id
+
+    Recipe.findByIdAndRemove(id)
+        .then(() => res.redirect('/recipes'))
+        .catch(err => (next))
 })
 
 module.exports = router
