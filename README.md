@@ -33,8 +33,8 @@ Second Module Project for Ironhack Wed Development Bootcamp
 | /places/new               | GET    | Render the create place form                                       |
 | /places/new               | POST   | 204 if successful                                                  |
 | /profile                  | GET    | Render the user's profile                                          |
-| /profile/edit             | GET    | Render the profile edit view                                       |
-| /profile/edit             | POST   | 204 if succesful                                                   |
+| /profile/myRecipes        | GET    | Render the user's saved recipe                                     |
+| /profile/myRecipes        | POST   | 204 if succesful                                                   |
 
 
  
